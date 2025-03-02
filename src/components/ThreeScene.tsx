@@ -2,12 +2,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment, PerspectiveCamera, Text, Float } from '@react-three/drei';
-import { Vector3 } from 'three';
+import { Vector3, Euler } from 'three';
 
 // 3D cube component
 const Cube = ({
-  position = [0, 0, 0],
-  rotation = [0, 0, 0],
+  position = [0, 0, 0] as [number, number, number],
+  rotation = [0, 0, 0] as [number, number, number],
   size = 1,
   color = "#4285F4",
   wireframe = false,
@@ -44,7 +44,7 @@ const Cube = ({
 };
 
 // 3D floating text
-const FloatingText = ({ text, position = [0, 0, 0], color = "white", size = 1 }) => {
+const FloatingText = ({ text, position = [0, 0, 0] as [number, number, number], color = "white", size = 1 }) => {
   return (
     <Float
       speed={2}
@@ -68,16 +68,16 @@ const FloatingText = ({ text, position = [0, 0, 0], color = "white", size = 1 })
 };
 
 // Main 3D Model Scene
-export const Model = ({ position = [0, 0, 0], autoRotate = true }) => {
+export const Model = ({ position = [0, 0, 0] as [number, number, number], autoRotate = true }) => {
   const groupRef = useRef(null);
 
   // Create cubes with different sizes and positions
   const cubes = [
-    { position: [0, 0, 0], size: 1.2, color: "#4285F4", wireframe: false },
-    { position: [2, 1, -1], size: 0.8, color: "#FBBC05", wireframe: false },
-    { position: [-2, -0.5, 1], size: 0.6, color: "#34A853", wireframe: false },
-    { position: [1, -2, 0.5], size: 0.9, color: "#EA4335", wireframe: false },
-    { position: [-1.5, 1.5, -0.5], size: 0.7, color: "#5F6368", wireframe: true },
+    { position: [0, 0, 0] as [number, number, number], size: 1.2, color: "#4285F4", wireframe: false },
+    { position: [2, 1, -1] as [number, number, number], size: 0.8, color: "#FBBC05", wireframe: false },
+    { position: [-2, -0.5, 1] as [number, number, number], size: 0.6, color: "#34A853", wireframe: false },
+    { position: [1, -2, 0.5] as [number, number, number], size: 0.9, color: "#EA4335", wireframe: false },
+    { position: [-1.5, 1.5, -0.5] as [number, number, number], size: 0.7, color: "#5F6368", wireframe: true },
   ];
 
   useFrame((state, delta) => {
